@@ -236,6 +236,12 @@ class XML_Parser(xml.sax.ContentHandler):
         if self.read_plugin_output:
             self.plugin_output += content
 
+def validate_address(address):
+    try:
+        return ip_address(address)
+    except ValueError:
+        return None
+
 def duplicate_check(cli_object):
     # This is used for checking for duplicate images
     # if it finds any, it removes them and uses a single image
