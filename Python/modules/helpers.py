@@ -10,6 +10,7 @@ import xml.sax
 from distutils.util import strtobool
 import glob
 import socket
+from ipaddress import ip_address, IPv4Address, IPv6Address
 from netaddr import IPAddress
 from netaddr.core import AddrFormatError
 from urllib.parse import urlparse
@@ -375,7 +376,7 @@ def textfile_parser(file_to_parse, cli_obj):
                 try:
                     port_number = int(url_again.split(":")[2].split("/")[0])
                 except ValueError:
-                    print("ERROR: You potentially provided an mal-formed URL!")
+                    print("ERROR: You provided a potentially malformed URL!")
                     print("ERROR: URL is - " + url_again)
                     sys.exit()
                 hostname_again = url_again.split(":")[0] + ":" + url_again.split(":")[1] + ":" + url_again.split(":")[2]
